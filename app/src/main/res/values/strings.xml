@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Athletic Snooping</string>
+    <string name="title_activity_main">Athletic Snooping</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="logowanie">Logowanie</string>
+    <string name="szukaj_zaw">Wyszukaj zawodnika</string>
+    <string name="szukaj_konk">Wyszukaj konkurencję</string>
+    <string name="info">O aplikacji</string>
+    <string name="title_activity_info">O aplikacji</string>
+    <string name="title_activity_search_athlete">Wyszukaj zawodnika</string>
+    <string name="title_activity_login">Zaloguj się</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Hasło (opcjonalnie)</string>
+    <string name="action_sign_in">Zaloguj się lub zarejestruj</string>
+    <string name="action_sign_in_short">Zaloguj</string>
+    <string name="error_invalid_email">Wprowadzono niepoprawny adres email</string>
+    <string name="error_invalid_password">Wprowadzone hasło jest za krótkie</string>
+    <string name="error_incorrect_password">Wprowadzono błędne hasło</string>
+    <string name="error_field_required">To pole jest wymagane</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_search_competition">Wyszukaj konkurencję</string>
+    <string name="version">ver. 1.0</string>
+    <string name="author">autor: dushabella</string>
+    <string name="graphics">grafika: kaja</string>
+    <string name="data">dane: pilar</string>
+    <string name="app_info">Aplikacja do oglądania wyników polskich lekkoatletów. Utworzona w ramach przedmiotu WPAM na WEiTI ze współpracą z firmą Domtel. </string>
+
+</resources>

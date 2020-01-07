@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#008577</color>-->
+    <!--><color name="colorPrimaryDark">#00574B</color><-->
+    <color name="colorPrimary">#F3E9E7</color>
+    <color name="colorPrimaryDark">#33004B</color>
+    <color name="colorAccent">#620666</color>
+    <color name="violet_background">#33004B</color>
+    <color name="beige_background">#F3E9E7</color>
+    <color name="drawer_text">#33004B</color>
+</resources>
