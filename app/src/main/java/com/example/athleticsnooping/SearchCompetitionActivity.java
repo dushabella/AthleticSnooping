@@ -48,6 +48,12 @@ public class SearchCompetitionActivity extends AppCompatActivity
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_FULLSCREEN); //
+
+
+
+        //TODO: get rid of it. It is a "test" to show that logging in works
+        UserManager um = new UserManager(getApplicationContext());
+        um.logOutUser();
     }
 
     @Override
