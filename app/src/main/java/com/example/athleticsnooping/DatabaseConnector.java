@@ -1,10 +1,9 @@
 package com.example.athleticsnooping;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -68,5 +67,36 @@ public class DatabaseConnector {
         }
 
         return savedPassword.equals(DigestUtils.sha256Hex(password));
+    }
+
+    public JSONArray searchWithQuery(Map<String, String> queryFields, String index) {
+        AppbaseClient client = new AppbaseClient(dbUrl, index, dbUsername, dbPassword);
+
+        //https://dzone.com/articles/23-useful-elasticsearch-example-queries
+        String query =  "{ \"query\": { \"bool\": { \"should\": [ "; // careful! there are two types of brackets here
+        for(String key : queryFields.keySet())
+            query += "{ \"match\": { \"" + key + "\" : \"" + queryFields.get(key) + "\" } },";
+        query = query.substring(0, query.length() - 1);
+        query += "] } } }"; // careful! there are two types of brackets here
+        //System.out.println(query);
+
+        String result = null;
+        try {
+            result = client.prepareSearch("_doc", query)
+                    .execute()
+                    .body()
+                    .string();
+        } catch(IOException ie) {
+            ie.printStackTrace();
+        }
+        //System.out.println(result);
+        try {
+            JSONObject json = new JSONObject(result);
+            JSONArray jsonArr = json.getJSONObject("hits").getJSONArray("hits");
+            return jsonArr;
+        } catch(JSONException je) {
+            je.printStackTrace();
+        }
+        return null;
     }
 }

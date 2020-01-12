@@ -1,6 +1,8 @@
 package com.example.athleticsnooping;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SearchAthleteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +57,10 @@ public class SearchAthleteActivity extends AppCompatActivity
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_FULLSCREEN); //
+
+        //TODO: Get rid of this. This is only to demonstrate searching
+        SearchTask st = new SearchTask();
+        st.execute((Void) null);
     }
 
     @Override
@@ -109,5 +122,40 @@ public class SearchAthleteActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public class SearchTask extends AsyncTask<Void, Void, Boolean> {
+
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            DatabaseConnector dc = new DatabaseConnector();
+            Map<String, String> queryFields = new HashMap<>();
+            queryFields.put("Imie", "Marcin");
+            queryFields.put("Nazwisko", "Lewandowski");
+            JSONArray results = dc.searchWithQuery(queryFields, "athletes");
+            for(int i=0; i < results.length(); i++) {
+                try {
+                    JSONObject res = results.getJSONObject(i);
+                    double score = res.getDouble("_score");
+                    String name = res.getJSONObject("_source").getString("Imie");
+                    String surname = res.getJSONObject("_source").getString("Nazwisko");
+                    System.out.println(name + " " + surname + " -> score = " + score);
+                } catch(JSONException je) {
+                    je.printStackTrace();
+                }
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            if (success)
+                finish();
+        }
+
+        @Override
+        protected void onCancelled() {
+        }
     }
 }
