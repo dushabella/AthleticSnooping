@@ -145,7 +145,7 @@ public class SearchAthleteActivity extends AppCompatActivity
                     je.printStackTrace();
                 }
             }
-            return true;
+            return false;
         }
 
         @Override

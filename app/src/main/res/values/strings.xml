@@ -28,9 +28,15 @@
     </string>
     <string name="title_activity_search_competition">Wyszukaj konkurencję</string>
     <string name="version">ver. 1.0</string>
-    <string name="author">autor: dushabella</string>
+    <string name="author">autor: dushabella, piotrro</string>
     <string name="graphics">grafika: kaja</string>
     <string name="data">dane: pilar</string>
-    <string name="app_info">Aplikacja do oglądania wyników polskich lekkoatletów. Utworzona w ramach przedmiotu WPAM na WEiTI ze współpracą z firmą Domtel. </string>
+    <string name="app_info">Aplikacja do oglądania wyników polskich lekkoatletów. Utworzona w ramach projektu akademickiego we współpracy z firmą Domtel. </string>
+    <!-- Strings related to search athlete / competition -->
+    <string name="prompt_name">Imię zawodnika</string>
+    <string name="prompt_surname">Nazwisko zawodnika</string>
+    <string name="prompt_competition">Nazwa konkurencji</string>
+    <string name="action_search">Szukaj</string>
+
 
 </resources>
